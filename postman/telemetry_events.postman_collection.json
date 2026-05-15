@@ -1,0 +1,72 @@
+{
+  "info": {
+    "_postman_id": "da784c78-7fd0-4bf0-9f27-8e1ad6994712",
+    "name": "telemetry_events",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51993295",
+    "_collection_link": "https://go.postman.co/collection/51993295-da784c78-7fd0-4bf0-9f27-8e1ad6994712?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Ingest Telemetry Event",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"eventType\": \"ENGINE_START\",\n    \"source\": \"Malik-Pro-Mac\",\n    \"data\": {\n        \"status\": \"ready\",\n        \"power_level\": 100\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/events/ingest",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "events",
+            "ingest"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Push Telemetry",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"eventType\": \"CRITICAL_ERROR\",\n    \"source\": \"Malik-Pro-Mac\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/events/ingest",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "events",
+            "ingest"
+          ]
+        },
+        "description": "This endpoint acts as the primary entry point for high-throughput telemetry data ingestion. It processes incoming JSON payloads and enriches them with unique UUIDs and server-side timestamps before persistence."
+      },
+      "response": []
+    }
+  ]
+}
