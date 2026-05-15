@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: 'mongo:latest'
+    container_name: event-mongo
+    ports:
+      - '27017:27017'  # Maps my Mac's 27017 to the Container's 27017
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: 'redis:latest'
+    container_name: event-redis
+    ports:
+      - '6379:6379'    # Maps my Mac's 6379 to the Container's 6379
+
+volumes:
+  mongo_data:          # This keeps the data safe even if the container stops
